@@ -1,0 +1,12 @@
+%呪文
+\usepackage[dvipdfmx]{graphicx, xcolor}
+
+%枠つき部分作るならtcolorbox、使い方はtexdoc tcolorboxかググればわかる
+\usepackage{tcolorbox}
+%tcolorboxの機能拡張。ページまたぎを実現/ボックスの装飾機能の拡張
+\tcbuselibrary{breakable,skins,raster}
+%tcolorboxの使用例。
+\newtcolorbox{mybox}{colframe=gray!10, colback=gray!10, sharp corners}
+
+% 表の強制固定
+\usepackage{float}

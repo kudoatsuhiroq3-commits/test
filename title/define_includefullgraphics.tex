@@ -1,0 +1,26 @@
+\hoffset0mm
+\voffset0mm
+
+\makeatletter
+\let\@@shipout\shipout
+\def\shipout\vbox{\@@shipout\vbox\bgroup\afterassignment\insertBackGround\let\reserved@a=}
+\def\insertBackGround#1{#1%
+        \iftombow
+                \copy\BackGround\kern0pt
+        \else
+                \kern-1truein\moveleft1truein\copy\BackGround\kern1truein
+        \fi}
+\newbox\BackGroundUnit
+\newbox\BackGround
+\def\@haikei#1{
+\setbox\BackGroundUnit\hbox{\includegraphics*[width=\paperwidth]{#1}}
+\@tempdima\paperheight
+\advance\@tempdima\ht\BackGroundUnit\advance\@tempdima\dp\BackGroundUnit
+\setbox\BackGround\vbox to \@tempdima{
+        \@tempdima=\paperwidth\advance\@tempdima\wd\BackGroundUnit
+        \leaders\hbox to\@tempdima{\leaders\copy\BackGroundUnit\hfil}\vfil
+}
+\wd\BackGround=0pt\ht\BackGround=0pt\dp\BackGround=0pt
+}
+\newcommand{\incluedefullgraphics}[1]{\pagestyle{empty}\@haikei{#1}\null}
+\makeatother

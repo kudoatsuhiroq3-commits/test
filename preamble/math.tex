@@ -1,0 +1,36 @@
+
+
+% 数式, 米国数学会が開発したのがamsmath, フォントを使うためのパッケージがamssymbs
+\usepackage{amsmath,amssymb}
+%定理環境、コピペ
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{dfn}{定義}[section]
+\newtheorem{prop}{命題}[section]
+\newtheorem{lem}{補題}[section]
+\newtheorem{thm}{定理}[section]
+\newtheorem*{thm*}{定理}
+\newtheorem{cor}{系}[section]
+\newtheorem{rem}{注意}[section]
+\newtheorem*{rem*}{注意}
+\newtheorem{fact}{事実}[section]
+\newtheorem{e.g.}{例}[section]
+
+%証明終わりの四角
+\renewcommand{\qedsymbol}{$\square$}
+
+%花文字, RSFS, Ralph Smith's Formal Script
+\usepackage{mathrsfs}
+
+% 数式太文字
+\usepackage{bm}
+
+%proofカスタム, 適宜変更
+\renewcommand{\proofname}{\textbf{証明}}
+
+%\label{}して\ref, \eqref　で参照した数式のみに数式番号が振られるようにしてる
+%だからequationやalignを*なしで使っても参照しない限り式番号はつかない
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}
+%2024/10/3追加（工藤英哲さん用のパッケージ）
+\usepackage{empheq}

@@ -1,0 +1,16 @@
+
+%sectionすらないのでヘッダーをページ数のみ表示させる
+\input{Header/only_pages.tex}
+\titleformat{\chapter}[hang]{\mcfamily}{}{0pt}{
+  \begin{TTL}
+    \centering
+    {\LARGE #1}
+\end{TTL}
+}[\centerline{理学部物理学科 hogehoge}]
+\phantomsection
+\addcontentsline{toc}{chapter}{サンプル(sectionすらない場合)}
+\chapter*{サンプル(sectionすらない場合)}
+
+\input{Articles/sample/sample.tex}
+%デフォルトのヘッダーに戻す
+\input{Header/section_subsection.tex}

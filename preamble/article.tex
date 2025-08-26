@@ -1,0 +1,61 @@
+
+%ヘッダー、フッター用
+%section構造が無い用のヘッダーとsection構造がある用のヘッダー2種類作っていて，ともにHeaderフォルダーに格納
+%\frontmatterでは前者がデフォ，\mainmatterでは後者がデフォと考えています。
+\usepackage{fancyhdr}
+
+%見出しの体裁のカスタマイズ用
+\usepackage[explicit]{titlesec}
+
+%記事タイトル用の勝手なtcolorboxを定義
+\newtcolorbox{TTL}{colframe=white, colback=white}
+
+%chapter（タイトル、名前）と本文の距離の設定
+\titlespacing{\chapter}{0.01zw}{1zw}{4zw}[0.01zw]
+
+%各記事のタイトルをchapterで作成することでTOCを表示すれば記事名が目次に載るようにしている
+%ただ，記事のタイトルが普通のchapterのようになってはオカシイので，titlesecを使ってchapterの表示のさせ方を，articleのタイトルのようにしている。
+%ただタイトルには名前もつけたい，しかしタイトルの後に改行した名前をくっつけるとTOCで表示した時に変な感じになる
+%そこで各記事に対して，chapter名を真ん中に表示させて，その後筆者の名前をくっつける，という装飾したchapterを各記事について作って解決した。
+%以下がタイトルの書き方の例（mcfamilyにしてるのはarticleのタイトルに寄せるため）
+%*をつけているのは章番号は不要なため
+%\addcontentsline　の行とその上の行は*をしたがTOCにはタイトルを反映させるため
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% \titleformat{\chapter}[hang]{\mcfamily}{}{0pt}{
+%   \begin{TTL}
+%     \centering
+%     {\LARGE #1}
+% \end{TTL}
+% }[\centerline{理学部物理学科 アインシュタイン}]
+
+% \phantomsection
+% \addcontentsline{toc}{chapter}{相対性理論}
+% \chapter*{相対性理論}
+%\input{記事へのパス}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%thebibliography環境をchapterではなくsectionみたいに扱う
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\chapter*}{\section*}{}{}
+
+%sectionの番号をchapter-independentにする
+\usepackage{remreset}
+\makeatletter
+  \@removefromreset{section}{chapter}
+\makeatother
+\renewcommand{\thesection}{\arabic{section}}
+
+%subsubsectionまで使えるようにする
+\setcounter{secnumdepth}{3}
+
+%白紙ページ生成用
+%\afterpage{\blankpage}で１ページ分白紙ページを生成できる
+\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{0}%
+    \newpage}
+
+

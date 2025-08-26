@@ -1,0 +1,26 @@
+
+
+
+\usepackage[
+dvipdfmx,% 欧文ではコメントアウトする
+setpagesize=false,%
+bookmarks=true,%
+bookmarksdepth=tocdepth,%
+bookmarksnumbered=true,%
+hypertexnames=false,% 
+linktoc=chapter,%
+colorlinks=false,%
+allcolors=blue%
+pdftitle={},%
+pdfsubject={},%
+pdfauthor={},%
+pdfkeywords={}%
+]{hyperref}
+% PDFのしおり機能の日本語文字化けを防ぐ((u)pLaTeXのときのみかく)
+\usepackage{pxjahyper}
+\hypersetup{
+    colorlinks=true, %ここをfalseにすればlinkの文字に色がつかずに四角で囲まれるようになる
+    citecolor=blue, %ここを適宜変更することで文献引用，　ref引用，　urlの色が変更される
+    linkcolor=blue,
+    urlcolor=blue,
+}

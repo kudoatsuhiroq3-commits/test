@@ -1,0 +1,7 @@
+
+
+%「目次」の字の間隔の調整
+\renewcommand{\contentsname}{\makebox[\linewidth]{\hfill 目\hspace{0.8cm}次 \hfill}}
+%Partを中央寄せする魔法
+\input{TOC/TOC_Part.tex}
+\setcounter{tocdepth}{0}
